@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "mysql.driver",
+      "type": "java.lang.String",
+      "description": "Description for mysql.driver."
+  }
+] }

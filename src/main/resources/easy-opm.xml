@@ -1,0 +1,35 @@
+<configuration>
+    <!-- database properties file -->
+    <properties resource="application.properties"/>
+
+    <!-- set a default connection -->
+<!--    <environments default="neo4j_developer">-->
+            <environments default="mysql_developer">
+        <!-- an optional connection configuration -->
+        <environment id="mysql_developer">
+            <dataSource>
+                <!-- four indispensable properties to connect database -->
+                <property name="driver" value="${mysql.driver}"/>
+                <property name="url" value="${mysql.url}"/>
+                <property name="username" value="${mysql.username}"/>
+                <property name="password" value="${mysql.password}"/>
+            </dataSource>
+        </environment>
+
+        <environment id="neo4j_developer">
+            <dataSource>
+                <!-- three indispensable properties to connect database -->
+                <property name="url" value="${neo4j.url}"/>
+                <property name="username" value="${neo4j.username}"/>
+                <property name="password" value="${neo4j.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!--    mapper file path-->
+    <mappers>
+        <!--        <mapper resource="mapper/UserMapper.xml"/>-->
+        <!--        <mapper resource="mapper/User_WorkMapper.xml"/>-->
+        <!--        <mapper resource="mapper/PersonMapper.xml"/>-->
+    </mappers>
+</configuration>
