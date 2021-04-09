@@ -1,1 +1,0 @@
-mvn install:install-file -DgroupId=com.rsh -DartifactId=easy-opm -Dversion=1.0 -Dpackaging=jar -Dfile=easy-opm.jar
