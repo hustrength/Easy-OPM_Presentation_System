@@ -1,21 +1,37 @@
 package com.rsh.mapper;
 
-import com.rsh.easy_opm.annotation.Insert;
-import com.rsh.easy_opm.annotation.ParamType;
-import com.rsh.easy_opm.annotation.ResultType;
-import com.rsh.easy_opm.annotation.Select;
-import com.rsh.model.Student;
+import com.rsh.easy_opm.annotation.*;
 import com.rsh.model.Teacher;
 
 public interface TeaMapper {
+    /**
+     * 1. queryById
+     * @param id
+     * @return
+     */
     @Select("select * from teacher " +
-            "where teaId = #{id};")
+            "where teaId=?;")
     @ParamType(String.class)
     @ResultType(Teacher.class)
     Teacher queryById(String id);
 
+    /**
+     * 2. insertOne
+     * @param tea
+     * @return
+     */
     @Insert("insert into teacher " +
             "values (#{TeaID}, #{Password}, #{TeaName});")
     @ParamType(Teacher.class)
-    boolean insertOne(Teacher teacher);
+    boolean insertOne(Teacher tea);
+
+    /**
+     * 3. updateOne
+     * @param tea
+     * @return
+     */
+    @Update("update teacher " +
+            "set TeaName=#{TeaName}, Password=#{Password} where TeaID=#{TeaID};")
+    @ParamType(Teacher.class)
+    boolean updateOne(Teacher tea);
 }

@@ -13,25 +13,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>团队比赛报名管理系统——教师界面</title>
 	<!-- Bootstrap Styles-->
-    <link href="<%=path %>/assets/css/bootstrap.css" rel="stylesheet" />
+    <link href="assets/css/bootstrap.css" rel="stylesheet" />
      <!-- FontAwesome Styles-->
-    <link href="<%=path %>/assets/css/font-awesome.css" rel="stylesheet" />
+    <link href="assets/css/font-awesome.css" rel="stylesheet" />
         <!-- Custom Styles-->
-    <link href="<%=path %>/assets/css/custom-styles.css" rel="stylesheet" />
+    <link href="assets/css/custom-styles.css" rel="stylesheet" />
      <!-- Google Fonts-->
    <link href='http://fonts.useso.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
 <body>
     <!-- JS Scripts-->
     <!-- jQuery Js -->
-    <script src="<%=path %>/assets/js/jquery-1.10.2.js"></script>
+    <script src="assets/js/jquery-1.10.2.js"></script>
       <!-- Bootstrap Js -->
-    <script src="<%=path %>/assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
     <!-- Metis Menu Js -->
-    <script src="<%=path %>/assets/js/jquery.metisMenu.js"></script>
+    <script src="assets/js/jquery.metisMenu.js"></script>
       <!-- Custom Js -->
-    <script src="<%=path %>/assets/js/custom-scripts.js"></script>
-    <script type="text/javascript" src="<%=path %>/js/project_release.js"></script>
+    <script src="assets/js/custom-scripts.js"></script>
+    <script type="text/javascript" src="js/project_release.js"></script>
     <div id="wrapper">
         <div id="wrapper">
         <nav class="navbar navbar-default top-navbar" role="navigation">

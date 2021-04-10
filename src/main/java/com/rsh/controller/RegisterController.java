@@ -31,21 +31,27 @@ public class RegisterController {
     @RequestMapping(value = "/signUp.do")
     @ResponseBody
     public String signUp(@RequestParam Map<String, String> paramMap){
-        System.out.println("register in controller");
+        System.out.println("sign up in controller");
 
-        String userid_signup = paramMap.get("userid_signup");
-        String password_signup = paramMap.get("password");
+        String userid = paramMap.get("userid");
+        String password = paramMap.get("password");
         String username = paramMap.get("username");
         boolean sex = paramMap.get("sex").equals("男");
         String signup_code = paramMap.get("signup_code");
 
-        return registerService.signUp(userid_signup, password_signup, username, sex, signup_code);
+        return registerService.signUp(userid, password, username, sex, signup_code);
     }
 
     @RequestMapping(value = "/logIn.do")
     @ResponseBody
-    public String logIn(){
-        return null;
+    public String signIn(@RequestParam Map<String, String> paramMap){
+        System.out.println("sign in in controller");
+
+        String userid = paramMap.get("userid");
+        String password = paramMap.get("password");
+        String status = paramMap.get("status");
+
+        return registerService.signIn(userid, password, status);
     }
 }
 

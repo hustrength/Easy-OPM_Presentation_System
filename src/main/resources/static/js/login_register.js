@@ -1,11 +1,14 @@
-var flag1 = false, flag2 = false, flag3 = false;
+var flag1 = false, flag2 = false;
 
 function checkIdRepeat(val, ele, code) {
     console.log("check id repeat in js");
     $.ajax({
         url: "register/checkIdRepeat.do",
-        type: "POST",
-        data: {"userId": val, "signUpCode": code},
+        type: "post",
+        data: {
+            "userId": val,
+            "signUpCode": code
+        },
         success: function (text) {
             if (text === "true") {
                 flag1 = true;
@@ -52,28 +55,31 @@ function checkPassword() {
 
 function commitForm_signin() {
     console.log("sign in in js");
-    // var status = document.getElementById("status").value;
-    // var login = "stu/main.jsp";
-    // if ("tea" === status) login = "tea/tea_main.jsp";
-    // $.ajax({
-    //     url: "servlet/serDoLogin?status=" + status,
-    //     type: "post",
-    //     async: false,
-    //     data: $('#form_login').serialize(),
-    //     dataType: "text",
-    //     success: function (text) {
-    //         if (text === "-1") {
-    //             alert("未知错误");
-    //         }
-    //         if (text === "0") {
-    //             alert("用户名不存在");
-    //         } else if (text === "1") {
-    //             alert('密码错误');
-    //         } else {
-    //             $("#form_login").attr("action", login);
-    //         }
-    //     }
-    // })
+    var status = document.getElementById("status").value;
+    var login = "redirect/stu/main";
+    if ("tea" === status) login = "redirect/tea/tea_main";
+
+    var userid_signin = document.getElementById("userid_signin").value;
+    var password_signin = document.getElementById("password_signin").value;
+
+    var obj ={
+        "userid": userid_signin,
+        "password": password_signin,
+        "status": status
+    }
+
+    $.ajax({
+        url: "register/logIn.do",
+        type: "post",
+        data: obj,
+        success: function (text) {
+            if (text === "success") {
+                window.location.href = login;
+            } else {
+                alert("密码或用户名错误");
+            }
+        }
+    })
 }
 
 function commitForm_signup() {
@@ -81,14 +87,14 @@ function commitForm_signup() {
     if (flag1 === false || flag2 === false) return false;
 
     var userid_signup = document.getElementById("userid_signup").value;
-    var password = document.getElementById("password_signup").value;
+    var password_signup = document.getElementById("password_signup").value;
     var username = document.getElementById("username").value;
     var sex = document.getElementById("sex").value;
     var signup_code = document.getElementById("signup_code").value;
 
     var obj = {
-        "userid_signup": userid_signup,
-        "password": password,
+        "userid": userid_signup,
+        "password": password_signup,
         "username": username,
         "sex": sex,
         "signup_code": signup_code
@@ -96,14 +102,14 @@ function commitForm_signup() {
 
     $.ajax({
         url: "register/signUp.do",
-        type: "POST",
+        type: "post",
         data: obj,
         success: function (text) {
             if (text === "success") {
                 alert("注册成功");
                 window.location.reload();
             } else if (text === "error_code") {
-                alert("教师注册码错误！");
+                alert("教师注册码错误");
             } else {
                 alert("注册失败");
             }

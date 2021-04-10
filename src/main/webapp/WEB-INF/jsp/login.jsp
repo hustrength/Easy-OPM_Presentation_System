@@ -4,7 +4,7 @@
 <html>
 <head>
 
-    <base href="/">
+    <base href="">
 
     <meta charset="UTF-8">
     <title>团队比赛报名管理系统</title>
@@ -60,7 +60,7 @@
                         <div><br></div>
                         <div><br></div>
                         <div class="group1">
-                            <input type="submit" class="button1" value="登录" onclick="commitForm_signup()">
+                            <input type="submit" class="button1" value="登录" onclick="commitForm_signin()">
                         </div>
                         <div class="hr"></div>
                         <div class="foot-lnk">
