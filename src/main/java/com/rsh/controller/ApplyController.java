@@ -21,13 +21,34 @@ public class ApplyController {
         this.applyService = applyService;
     }
 
-    @RequestMapping("insertApply.do")
+    @RequestMapping("/insert.do")
     @ResponseBody
-    public String insertApply(@RequestParam int tid,
-                              @RequestParam String sid,
-                              HttpServletRequest request) {
+    public String insert(@RequestParam String tid,
+                         @RequestParam String sid,
+                         HttpServletRequest request) {
         HttpSession session = request.getSession();
         Student applicant = (Student) session.getAttribute("student");
-        return applyService.insert(applicant, tid, sid);
+        return applyService.insert(applicant, Integer.parseInt(tid), sid);
+    }
+
+    @RequestMapping("/agree.do")
+    @ResponseBody
+    public String agree(@RequestParam String tid,
+                        @RequestParam String sid){
+        return applyService.agree(Integer.parseInt(tid), sid);
+    }
+
+    @RequestMapping("/refuse.do")
+    @ResponseBody
+    public String refuse(@RequestParam String tid,
+                         @RequestParam String sid){
+        return applyService.refuse(Integer.parseInt(tid), sid);
+    }
+
+    @RequestMapping("/confirm.do")
+    @ResponseBody
+    public String confirm(@RequestParam String tid,
+                          @RequestParam String sid){
+        return applyService.confirm(Integer.parseInt(tid), sid);
     }
 }

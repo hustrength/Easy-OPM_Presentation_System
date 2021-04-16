@@ -1,6 +1,5 @@
 <%@ page import="com.rsh.model.Competition" %>
 <%@ page import="java.util.List" %>
-<%@ page import="java.util.Iterator" %>
 <%@ page import="com.rsh.mapper.CompetitionMapper" %>
 <%@ page import="com.rsh.mapper.EasyOpmMapper" %>
 <%@ page pageEncoding="utf-8" %>
@@ -19,23 +18,21 @@
     <link href="/assets/css/font-awesome.css" rel="stylesheet"/>
     <!-- Custom Styles-->
     <link href="/assets/css/custom-styles.css" rel="stylesheet"/>
-    <!-- Google Fonts-->
-    <link href='http://fonts.useso.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
 </head>
 <body>
 <!-- /. WRAPPER  -->
 <!-- JS Scripts-->
 <!-- -- PagingManage Js -- -->
-<script type="text/javascript" src="/js/PagingManage.js"></script>
+<script type="text/javascript" src="/js/lib/PagingManage.js"></script>
 <!-- jQuery Js -->
-<script src="/assets/js/jquery-1.10.2.js"></script>
+<script src="/js/lib/jquery-3.5.1.min.js"></script>
 <!-- Bootstrap Js -->
 <script src="/assets/js/bootstrap.min.js"></script>
 <!-- Metis Menu Js -->
 <script src="/assets/js/jquery.metisMenu.js"></script>
 <!-- Custom Js -->
 <script src="/assets/js/custom-scripts.js"></script>
-<script type="text/javascript" src="/js/project_info_tea.js"></script>
+<script type="text/javascript" src="/js/my/project_info_tea.js"></script>
 <script type="text/javascript">
     function GetActiveTab(i) {
         var nav_id = "#nav-tabs" + i.toString() + " li.active";
@@ -103,7 +100,7 @@
                     <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-user">
-                    <li><a href="<%=teaPath %>tea_infojsp"><i class="fa fa-user fa-fw"></i> 个人信息</a>
+                    <li><a href="<%=teaPath %>tea_info"><i class="fa fa-user fa-fw"></i> 个人信息</a>
                     <li class="divider"></li>
                     <li><a href="/logout"><i class="fa fa-sign-out fa-fw"></i> 注销</a>
                     </li>
@@ -117,24 +114,24 @@
         <div class="sidebar-collapse">
             <ul class="nav" id="main-menu">
                 <li>
-                    <a href="<%=teaPath %>tea_mainjsp"><i class="fa fa-desktop"></i> 参赛须知</a>
+                    <a href="<%=teaPath %>tea_main"><i class="fa fa-desktop"></i> 参赛须知</a>
                 </li>
                 <li>
                     <a class="active-menu"><i class="fa fa-sitemap"></i> 比赛信息<span class="fa arrow"/></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="<%=teaPath %>project_releasejsp">发布比赛</a><!--连接到发布比赛信息jsp，自动创建一个新的比赛信息数据结构  -->
+                            <a href="<%=teaPath %>project_release">发布比赛</a><!--连接到发布比赛信息jsp，自动创建一个新的比赛信息数据结构  -->
                         </li>
                         <li>
-                            <a href="<%=teaPath %>project_info_teajsp">查看比赛</a><!--连接到查看比赛信息jsp，自动创建一个新的比赛信息数据结构  -->
+                            <a href="<%=teaPath %>project_info_tea">查看比赛</a><!--连接到查看比赛信息jsp，自动创建一个新的比赛信息数据结构  -->
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <a href="<%=teaPath %>tea_teamjsp"><i class="fa fa-users"></i> 学生组队信息</a>
+                    <a href="<%=teaPath %>tea_team"><i class="fa fa-users"></i> 学生组队信息</a>
                 </li>
                 <li>
-                    <a href="<%=teaPath %>tea_infojsp"><i class="fa fa-user"></i> 教师个人信息</a>
+                    <a href="<%=teaPath %>tea_info"><i class="fa fa-user"></i> 教师个人信息</a>
                 </li>
             </ul>
         </div>
@@ -211,33 +208,33 @@
                                     </div>
                                 </div>
                             </div>
-                            <form id="form_pro<%=i%>" name="form_pro">
+                            <div id="form_pro<%=i%>" name="form_pro">
                                 <div class="tab-content">
                                     <div class="tab-pane fade active in" id="home<%=i%>" style="height:240px">
-                                                    <textarea class="col-sm-12" id="Intro" name="Intro"
+                                                    <textarea class="col-sm-12" id="Intro<%=i%>" name="Intro"
                                                               readonly="readonly"
                                                               style="border:0.5px solid #ffffff;overflow-y:scroll;height:240px;font-size:21px;
                                                               font-weight:200;line-height:25px;margin-top:15px"><%=competition.getIntroduction() %></textarea>
                                     </div>
                                     <div class="tab-pane fade" id="profile<%=i%>" style="height:240px">
-													<textarea class="col-sm-12" id="Bg" name="Bg" readonly="readonly"
+													<textarea class="col-sm-12" id="Bg<%=i%>" name="Bg" readonly="readonly"
                                                               style="border:0.5px solid #ffffff;overflow-y:scroll;height:240px;font-size:21px;
                                                               font-weight:200;line-height:25px;margin-top:15px">test</textarea>
                                     </div>
                                     <div class="tab-pane fade" id="messages<%=i%>" style="height:240px">
-													<textarea class="col-sm-12" id="Info" name="Info"
+													<textarea class="col-sm-12" id="Info<%=i%>" name="Info"
                                                               readonly="readonly"
                                                               style="border:0.5px solid #ffffff;overflow-y:scroll;height:240px;font-size:21px;
                                                               font-weight:200;line-height:25px;margin-top:15px">test</textarea>
                                     </div>
                                     <div class="tab-pane fade" id="settings<%=i%>" style="height:240px">
-                                                    <textarea class="col-sm-12" id="Other" name="Other"
+                                                    <textarea class="col-sm-12" id="Other<%=i%>" name="Other"
                                                               readonly="readonly"
                                                               style="border:0.5px solid #ffffff;overflow-y:scroll;height:240px;font-size:21px;
                                                               font-weight:200;line-height:25px;margin-top:15px">test</textarea>
                                     </div>
                                 </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
 

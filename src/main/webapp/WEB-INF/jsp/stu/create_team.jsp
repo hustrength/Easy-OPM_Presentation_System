@@ -21,13 +21,11 @@
     <link href="/assets/css/font-awesome.css" rel="stylesheet"/>
     <!-- Custom Styles-->
     <link href="/assets/css/custom-styles.css" rel="stylesheet"/>
-    <!-- Google Fonts-->
-    <link href='http://fonts.useso.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
 </head>
 <body>
 <!-- JS Scripts-->
 <!-- jQuery Js -->
-<script src="/assets/js/jquery-1.10.2.js"></script>
+<script src="/js/lib/jquery-3.5.1.min.js"></script>
 <!-- Bootstrap Js -->
 <script src="/assets/js/bootstrap.min.js"></script>
 <!-- Metis Menu Js -->
@@ -37,7 +35,7 @@
 <!-- Jquery Js -->
 <script type="text/javascript" src="/js/jquery-latest.js"></script>
 <!-- CreateGroup Js -->
-<script type="text/javascript" src="/js/createTeam.js"></script>
+<script type="text/javascript" src="/js/my/createTeam.js"></script>
 <div id="wrapper">
     <nav class="navbar navbar-default top-navbar" role="navigation">
         <div class="navbar-header">
@@ -227,7 +225,7 @@
                                         <div class="form-group">
                                             <label>团队名称</label>
                                             <input class="form-control" id="Gname" name="Gname" required="required"
-                                                   oninput="check_gname_repeat()">
+                                                   onchange="check_gname_repeat()">
                                         </div>
                                         <div class="form-group">
                                             <label>选择比赛</label>

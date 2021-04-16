@@ -25,7 +25,7 @@
 <!-- /. WRAPPER  -->
 <!-- JS Scripts-->
 <!-- jQuery Js -->
-<script src="/assets/js/jquery-1.10.2.js"></script>
+<script src="/js/lib/jquery-3.5.1.min.js"></script>
 <!-- Bootstrap Js -->
 <script src="/assets/js/bootstrap.min.js"></script>
 <!-- Metis Menu Js -->
@@ -35,7 +35,9 @@
 <script src="/assets/js/morris/morris.js"></script>
 <!-- Custom Js -->
 <script src="/assets/js/custom-scripts.js"></script>
-<script type="text/javascript" src="/js/tea_main.js"></script>
+
+<!-- tea_main Js -->
+<script type="text/javascript" src="/js/my/tea_main.js"></script>
 
 <script type="text/javascript">
     function edit_noti(title_old, content_old) {

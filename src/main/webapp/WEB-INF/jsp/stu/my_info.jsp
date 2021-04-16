@@ -29,7 +29,7 @@
 
 <!-- JS Scripts-->
 <!-- jQuery Js -->
-<script src="/assets/js/jquery-1.10.2.js"></script>
+<script src="/js/lib/jquery-3.5.1.min.js"></script>
 <!-- Bootstrap Js -->
 <script src="/assets/js/bootstrap.min.js"></script>
 <!-- Metis Menu Js -->
@@ -37,10 +37,10 @@
 <!-- Custom Js -->
 <script src="/assets/js/custom-scripts.js"></script>
 <!-- Jquery Js -->
-<script type="text/javascript" src="/js/jquery-latest.js"></script>
+<script type="text/javascript" src="/js/jquery-3.5.1.min.js"></script>
 <!-- CreateGroup Js -->
-<script type="text/javascript" src="/js/my_info.js"></script>
-<script type="text/javascript" src="/js/msg.js"></script>
+<script type="text/javascript" src="/js/my/my_info.js"></script>
+<script type="text/javascript" src="/js/my/msg.js"></script>
 <div id="wrapper">
     <nav class="navbar navbar-default top-navbar" role="navigation">
         <div class="navbar-header">

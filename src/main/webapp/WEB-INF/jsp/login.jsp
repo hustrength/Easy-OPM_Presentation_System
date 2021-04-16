@@ -15,8 +15,8 @@
     <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
     <meta http-equiv="description" content="This is my page">
 
-    <script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
-    <script type="text/javascript" src="js/login_register.js"></script>
+    <script type="text/javascript" src="/js/lib/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="/js/my/login_register.js"></script>
 </head>
 
 <body>

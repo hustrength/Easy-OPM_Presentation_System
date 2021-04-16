@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Service("teamService")
+@Service
 public class TeamService {
     private final StuTeamMapper stuTeamMapper = EasyOpmMapper.getStuTeamMapper();
 
@@ -91,6 +91,13 @@ public class TeamService {
         paramMap.put("TID", tid);
         paramMap.put("SID", captain_id);
         paramMap.put("POS", false);
-        return stuTeamMapper.insertStuToTeam(paramMap) ? "success" : "fail";
+        if (!stuTeamMapper.insertStuToTeam(paramMap))
+            return "fail";
+
+        paramMap.clear();
+        paramMap.put("TID", tid);
+        paramMap.put("ACT", -1);     // decrease the vacant position
+
+        return stuTeamMapper.updateVacantPos(paramMap) ? "success" : "fail_to_update_stu_pos";
     }
 }

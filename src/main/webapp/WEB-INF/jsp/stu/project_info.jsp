@@ -22,23 +22,22 @@
     <link href="/assets/css/font-awesome.css" rel="stylesheet"/>
     <!-- Custom Styles-->
     <link href="/assets/css/custom-styles.css" rel="stylesheet"/>
-    <!-- Google Fonts-->
-    <link href='http://fonts.useso.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
 </head>
 <body>
 <!-- /. WRAPPER  -->
 <!-- JS Scripts-->
 <!-- -- PagingManage Js -- -->
-<script type="text/javascript" src="js/PagingManage.js"></script>
+<script type="text/javascript" src="/js/lib/PagingManage.js"></script>
 <!-- jQuery Js -->
-<script src="/assets/js/jquery-1.10.2.js"></script>
+<script src="/js/lib/jquery-3.5.1.min.js"></script>
 <!-- Bootstrap Js -->
 <script src="/assets/js/bootstrap.min.js"></script>
 <!-- Metis Menu Js -->
 <script src="/assets/js/jquery.metisMenu.js"></script>
 <!-- Custom Js -->
 <script src="/assets/js/custom-scripts.js"></script>
-<script type="text/javascript" src="/js/msg.js"></script>
+<!-- msg Js -->
+<script type="text/javascript" src="/js/my/msg.js"></script>
 <div id="wrapper">
     <nav class="navbar navbar-default top-navbar" role="navigation">
         <div class="navbar-header">

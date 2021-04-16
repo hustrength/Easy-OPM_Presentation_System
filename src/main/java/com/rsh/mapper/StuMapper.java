@@ -26,7 +26,7 @@ public interface StuMapper {
     @Insert("insert into student " +
             "values (#{StuID}, #{Password}, #{Sex}, #{StuName});")
     @ParamType(Student.class)
-    boolean insertOne(Student stu);
+    Boolean insertOne(Student stu);
 
     /**
      * 3. updateOne
@@ -37,7 +37,7 @@ public interface StuMapper {
             "set Password=#{Password}, Sex=#{Sex}, StuName=#{StuName} " +
             "where StuID=#{StuID};")
     @ParamType(Student.class)
-    boolean updateOne(Student stu);
+    Boolean updateOne(Student stu);
 
     /**
      * 4. queryTeamIdByCaptainId

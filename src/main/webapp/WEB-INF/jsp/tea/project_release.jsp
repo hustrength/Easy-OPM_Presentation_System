@@ -15,20 +15,19 @@
     <link href="/assets/css/font-awesome.css" rel="stylesheet"/>
     <!-- Custom Styles-->
     <link href="/assets/css/custom-styles.css" rel="stylesheet"/>
-    <!-- Google Fonts-->
-    <link href='http://fonts.useso.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
 </head>
 <body>
 <!-- JS Scripts-->
 <!-- jQuery Js -->
-<script src="/assets/js/jquery-1.10.2.js"></script>
+<script src="/js/lib/jquery-3.5.1.min.js"></script>
 <!-- Bootstrap Js -->
 <script src="/assets/js/bootstrap.min.js"></script>
 <!-- Metis Menu Js -->
 <script src="/assets/js/jquery.metisMenu.js"></script>
 <!-- Custom Js -->
 <script src="/assets/js/custom-scripts.js"></script>
-<script type="text/javascript" src="/js/project_release.js"></script>
+<!-- project_release js -->
+<script type="text/javascript" src="/js/my/project_release.js"></script>
 <div id="page_wrapper">
     <div id="wrapper">
         <nav class="navbar navbar-default top-navbar" role="navigation">
@@ -106,7 +105,7 @@
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-lg-6">
-                                        <form role="form" id="form_pro" name="form_pro" method="post">
+                                        <div id="form_pro">
                                             <div class="form-group">
                                                 <label>比赛名称</label>
                                                 <input class="form-control" id="Pname" name="Pname" required="required">
@@ -136,7 +135,7 @@
                                             <button type="submit" class="btn btn-primary" onclick="pro_release()">提交
                                             </button>
                                             <button type="reset" class="btn btn-default">重新填写</button>
-                                        </form>
+                                        </div>
                                     </div>
                                     <!-- /.col-lg-6 (nested) -->
 

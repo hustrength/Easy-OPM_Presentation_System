@@ -12,9 +12,9 @@ public interface ApplyMapper {
      * @param apply
      * @return
      */
-    @Insert("insert into Apply values(?,?,?);")
+    @Insert("insert into Apply values(#{ApplicantID},#{TID},#{Status});")
     @ParamType(Apply.class)
-    boolean insertOne(Apply apply);
+    Boolean insertOne(Apply apply);
 
     /**
      * 2. deleteApply
@@ -23,7 +23,7 @@ public interface ApplyMapper {
      */
     @Delete("delete from Apply where ApplicantID=#{ApplicantID} and TID=#{TID};")
     @ParamType(Map.class)
-    boolean deleteApply(Map<String, Object> paramMap);
+    Boolean deleteApply(Map<String, Object> paramMap);
 
     /**
      * 3. updateApplyStatus
@@ -33,7 +33,7 @@ public interface ApplyMapper {
     @Update("update Apply set Status=#{NewStatus} " +
             "where ApplicantID=#{ApplicantID} and TID=#{TID};")
     @ParamType(Map.class)
-    boolean updateApplyStatus(Map<String, Object> paramMap);
+    Boolean updateApplyStatus(Map<String, Object> paramMap);
 
     /**
      * 4. isApplied

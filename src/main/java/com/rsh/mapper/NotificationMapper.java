@@ -11,7 +11,7 @@ public interface NotificationMapper {
      */
     @Insert("insert into Notification(Title,Content) values(#{Title},#{Content});")
     @ParamType(Notification.class)
-    boolean insertNotification(Notification notification);
+    Boolean insertNotification(Notification notification);
 
     /**
      * 2. updateNotification
@@ -20,7 +20,7 @@ public interface NotificationMapper {
      */
     @Update("update Notification set Title=#{Title},Content=#{Content};")
     @ParamType(Notification.class)
-    boolean updateNotification(Notification notification);
+    Boolean updateNotification(Notification notification);
 
     /**
      * 3. query

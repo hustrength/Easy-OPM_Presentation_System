@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import javax.servlet.http.HttpSession;
 
 
-@Service("registerService")
+@Service
 public class RegisterService {
     private final StuMapper stuMapper = EasyOpmMapper.getStuMapper();
     private final TeaMapper teaMapper = EasyOpmMapper.getTeaMapper();
@@ -26,12 +26,14 @@ public class RegisterService {
     }
 
     public String signUp(String userId, String password, String username, boolean sex, String signUpCode) {
+        // student registry
         if (signUpCode.isEmpty()) {
 
             Student student = new Student(userId, password, sex, username);
 
             return stuMapper.insertOne(student) ? "success" : "fail";
-        } else {                            //教师注册
+        } // teacher registry
+        else {
             if (!"N88".equals(signUpCode)) {
                 return "error_code";
             }

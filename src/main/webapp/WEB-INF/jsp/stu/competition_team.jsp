@@ -2,7 +2,6 @@
 <%@ page import="com.rsh.model.Apply" %>
 <%@ page import="com.rsh.model.Team" %>
 <%@ page import="com.rsh.model.Competition" %>
-<%@ page import="java.util.Iterator" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.rsh.mapper.*" %>
 <%@ page pageEncoding="utf-8" %>
@@ -32,7 +31,7 @@
 <!-- jQuery Js -->
 <div>
 </div>
-<script src=" /assets/js/jquery-1.10.2.js"></script>
+<script src=" /js/lib/jquery-3.5.1.min.js"></script>
 <!-- Bootstrap Js -->
 <script src="/assets/js/bootstrap.min.js"></script>
 <!-- Metis Menu Js -->
@@ -43,8 +42,8 @@
 <!-- Custom Js -->
 <script src="/assets/js/custom-scripts.js"></script>
 
-<script type="text/javascript" src="/js/competition_team.js"></script>
-<script type="text/javascript" src="/js/msg.js"></script>
+<script type="text/javascript" src="/js/my/competition_team.js"></script>
+<script type="text/javascript" src="/js/my/msg.js"></script>
 <div id="wrapper">
     <nav class="navbar navbar-default top-navbar" role="navigation">
         <div class="navbar-header">
@@ -223,7 +222,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="jumbotron">
-                        <h1>你还未参加比赛！</h1>
+                        <h1 style="font-size: 50px">你还未参加比赛！</h1>
                         <p>请选择加入团队或创建团队</p>
                         <hr>
                         <p>
@@ -385,7 +384,7 @@
 
                     %>
                     <hr>
-                    <div class="row" style="margin-left:0px">
+                    <div class="row" style="margin-left:0">
                         <div class="col-md-3">
                             <img src="/img/profile.png" style="max-width:80%; max-height:80%">
                         </div>
@@ -473,7 +472,7 @@
                         %>
                         <div class="row">
                             <button class="btn btn-primary btn-lg" style="margin-top:50px;" data-toggle="modal"
-                                    data-target="#remove1">退出团队
+                                    data-target="#remove2">退出团队
                             </button>
                             <div class="modal fade" id="remove2" tabindex="-1" role="dialog"
                                  aria-labelledby="myModalLabel" aria-hidden="true">

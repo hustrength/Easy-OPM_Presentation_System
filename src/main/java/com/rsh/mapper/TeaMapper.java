@@ -23,7 +23,7 @@ public interface TeaMapper {
     @Insert("insert into teacher " +
             "values (#{TeaID}, #{Password}, #{TeaName});")
     @ParamType(Teacher.class)
-    boolean insertOne(Teacher tea);
+    Boolean insertOne(Teacher tea);
 
     /**
      * 3. updateOne
@@ -33,5 +33,5 @@ public interface TeaMapper {
     @Update("update teacher " +
             "set TeaName=#{TeaName}, Password=#{Password} where TeaID=#{TeaID};")
     @ParamType(Teacher.class)
-    boolean updateOne(Teacher tea);
+    Boolean updateOne(Teacher tea);
 }

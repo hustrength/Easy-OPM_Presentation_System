@@ -10,6 +10,7 @@ import java.util.Map;
 public interface StuTeamMapper {
     /**
      * 1. queryAllTeam
+     *
      * @return
      */
     @Select("select * from team;")
@@ -18,6 +19,7 @@ public interface StuTeamMapper {
 
     /**
      * 2. queryAllTeamByCid
+     *
      * @param cid
      * @return
      */
@@ -28,12 +30,13 @@ public interface StuTeamMapper {
 
     /**
      * 3. queryAllMembers
+     *
      * @param tid
      * @return return all members in the team except the captain
      */
     @Select("select * " +
             "from Student inner join Stu_Team " +
-            "on Student.StuID=Stu_Team.StuID" +
+            "on Student.StuID=Stu_Team.StuID " +
             "where Position=1 and TID=?")
     @ParamType(Integer.class)
     @ResultType(Student.class)
@@ -41,6 +44,7 @@ public interface StuTeamMapper {
 
     /**
      * 4. belongToTeam
+     *
      * @param paramMap StuID and TID
      * @return
      */
@@ -51,6 +55,7 @@ public interface StuTeamMapper {
 
     /**
      * 5. hasJoinedTeam
+     *
      * @param sid
      * @return
      */
@@ -61,43 +66,48 @@ public interface StuTeamMapper {
 
     /**
      * 6. isVacant
+     *
      * @param tid
      * @return
      */
-    @Select("select exists(select * from Team where TID=?);")
+    @Select("select VacantPos from Team where TID=?;")
     @ParamType(Integer.class)
-    @ResultType(Boolean.class)
-    Boolean isVacant(int tid);
+    @ResultType(Integer.class)
+    Integer isVacant(int tid);
 
     /**
      * 7. updateVacantPos
+     *
      * @param paramMap
      * @return
      */
     @Update("update Team set VacantPos=VacantPos+(${ACT}) where TID=#{TID};")
     @ParamType(Map.class)
-    boolean updateVacantPos(Map<String, Object> paramMap);
+    Boolean updateVacantPos(Map<String, Object> paramMap);
 
     /**
      * 8. insertStuToTeam
+     *
      * @param paramMap
      * @return
      */
     @Insert("insert into Stu_team values(#{TID},#{SID},#{POS});")
     @ParamType(Map.class)
-    boolean insertStuToTeam(Map<String, Object> paramMap);
+    Boolean insertStuToTeam(Map<String, Object> paramMap);
 
     /**
      * 9. removeStuFromTeam
+     *
      * @param paramMap
      * @return
      */
     @Delete("delete from Stu_team where TID=#{TID} and StuID=#{SID};")
     @ParamType(Map.class)
-    boolean removeStuFromTeam(Map<String, Object> paramMap);
+    Boolean removeStuFromTeam(Map<String, Object> paramMap);
 
     /**
      * 10. queryTeamByName
+     *
      * @param TName
      * @return
      */
@@ -108,6 +118,7 @@ public interface StuTeamMapper {
 
     /**
      * 11. queryTeamById
+     *
      * @param tid
      * @return
      */
@@ -118,39 +129,43 @@ public interface StuTeamMapper {
 
     /**
      * 12. addTeam
+     *
      * @param team
      * @return
      */
     @Insert("insert into Team(TName, CID, CaptainID, VacantPos) " +
             "values(#{TName},#{CID},#{CaptainID},#{VacantPos});")
     @ParamType(Team.class)
-    boolean addTeam(Team team);
+    Boolean addTeam(Team team);
 
     /**
      * 13. updateCaptain
+     *
      * @param paramMap
      * @return
      */
     @Update("update Team set CaptainID=#{CaptainID} where TID=#{TID};")
     @ParamType(Map.class)
-    boolean updateCaptain(Map<String, Object> paramMap);
+    Boolean updateCaptain(Map<String, Object> paramMap);
 
     /**
      * 14. updateStuPos
+     *
      * @param paramMap
      * @return
      */
     @Update("update Stu_Team set Position=#{Pos} " +
             "where TID=#{TID} and StuID=#{SID};")
     @ParamType(Map.class)
-    boolean updateStuPos(Map<String, Object> paramMap);
+    Boolean updateStuPos(Map<String, Object> paramMap);
 
     /**
      * 15. deleteTeamInfo
+     *
      * @param tid
      * @return
      */
     @Delete("delete from Team where TID=?;")
     @ParamType(Integer.class)
-    boolean deleteTeamInfo(int tid);
+    Boolean deleteTeamInfo(int tid);
 }

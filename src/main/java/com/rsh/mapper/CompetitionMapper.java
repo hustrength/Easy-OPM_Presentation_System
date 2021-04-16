@@ -31,7 +31,7 @@ public interface CompetitionMapper {
      */
     @Update("update Competition set CName=#{CName}, Introduction=#{Introduction} where CID=#{CID};")
     @ParamType(Competition.class)
-    boolean updateCompetition(Competition competition);
+    Boolean update(Competition competition);
 
     /**
      * 4. insertCompetition
@@ -40,7 +40,7 @@ public interface CompetitionMapper {
      */
     @Insert("insert into Competition(CName, Introduction, Publisher) values(#{CName},#{Introduction},#{Publisher});")
     @ParamType(Competition.class)
-    boolean insertCompetition(Competition competition);
+    Boolean insert(Competition competition);
 
     /**
      * 5. deleteCompetition
@@ -49,5 +49,5 @@ public interface CompetitionMapper {
      */
     @Delete("delete from Competition where CID=?;")
     @ParamType(Integer.class)
-    boolean deleteCompetition(int cid);
+    Boolean deleteCompetition(int cid);
 }

@@ -15,15 +15,12 @@
     <link href="/assets/css/font-awesome.css" rel="stylesheet"/>
     <!-- Custom Styles-->
     <link href="/assets/css/custom-styles.css" rel="stylesheet"/>
-    <!-- Google Fonts-->
-    <link href='http://fonts.useso.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
-    <link href="/assets/css/main.css" rel="stylesheet"/>
 </head>
 <body>
 
 <!-- JS Scripts-->
 <!-- jQuery Js -->
-<script src="/assets/js/jquery-1.10.2.js"></script>
+<script src="/js/lib/jquery-3.5.1.min.js"></script>
 <!-- Bootstrap Js -->
 <script src="/assets/js/bootstrap.min.js"></script>
 <!-- Metis Menu Js -->
@@ -31,15 +28,15 @@
 <!-- Custom Js -->
 <script src="/assets/js/custom-scripts.js"></script>
 <!-- Jquery Js -->
-<script type="text/javascript" src="/js/jquery-latest.js"></script>
+<script type="text/javascript" src="/js/lib/jquery-3.5.1.min.js"></script>
 <!-- CreateGroup Js -->
-<script type="text/javascript" src="/js/tea_info.js"></script>
+<script type="text/javascript" src="/js/my/my_info.js"></script>
 <script type="text/javascript">
     function edit_input() {
-        var btn = document.getElementById("edit");
-        var title = document.getElementById("title");
-        var content = document.getElementById("content");
-        var string = "sds";
+        const btn = document.getElementById("edit");
+        const title = document.getElementById("title");
+        const content = document.getElementById("content");
+
         if (btn.getAttribute('value') === "编辑") {
             btn.setAttribute("value", "复原");
             title.removeAttribute("readOnly");

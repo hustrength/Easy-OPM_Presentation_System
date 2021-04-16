@@ -22,42 +22,42 @@ public class TeamController {
         this.teamService = teamService;
     }
 
-    @RequestMapping("deleteGps.do")
+    @RequestMapping("/deleteGps.do")
     @ResponseBody
-    public String deleteGps(@RequestParam int tid,
+    public String deleteGps(@RequestParam String tid,
                             @RequestParam String captain_id) {
-        return teamService.deleteGps(tid, captain_id);
+        return teamService.deleteGps(Integer.parseInt(tid), captain_id);
     }
 
-    @RequestMapping("removeMember.do")
+    @RequestMapping("/removeMember.do")
     @ResponseBody
-    public String removeMember(@RequestParam int tid,
+    public String removeMember(@RequestParam String tid,
                                @RequestParam String sid) {
-        return teamService.removeMember(tid, sid);
+        return teamService.removeMember(Integer.parseInt(tid), sid);
     }
 
-    @RequestMapping("transferLeader.do")
+    @RequestMapping("/transferLeader.do")
     @ResponseBody
-    public String transferLeader(@RequestParam int tid,
+    public String transferLeader(@RequestParam String tid,
                                  @RequestParam String newCaptainId,
                                  @RequestParam String oldCaptainId) {
-        return teamService.transferLeader(tid, newCaptainId, oldCaptainId);
+        return teamService.transferLeader(Integer.parseInt(tid), newCaptainId, oldCaptainId);
     }
 
-    @RequestMapping("quitTeam.do")
+    @RequestMapping("/quitTeam.do")
     @ResponseBody
-    public String quitTeam(@RequestParam int tid,
+    public String quitTeam(@RequestParam String tid,
                            @RequestParam String sid){
-        return teamService.removeMember(tid, sid);
+        return teamService.removeMember(Integer.parseInt(tid), sid);
     }
 
-    @RequestMapping("checkTeamName.do")
+    @RequestMapping("/checkTeamName.do")
     @ResponseBody
     public String checkTeamName(@RequestParam String teamName){
         return teamService.checkTeamName(teamName);
     }
 
-    @RequestMapping("createTeam.do")
+    @RequestMapping("/createTeam.do")
     @ResponseBody
     public String createTeam(@RequestParam Map<String, String> paramMap, HttpServletRequest request){
         String teamName = paramMap.get("teamName");
