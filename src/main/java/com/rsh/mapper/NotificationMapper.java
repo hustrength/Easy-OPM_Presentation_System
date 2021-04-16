@@ -29,6 +29,4 @@ public interface NotificationMapper {
     @Select("select * from Notification;")
     @ResultType(Notification.class)
     Notification query();
-
-
 }

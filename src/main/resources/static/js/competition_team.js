@@ -1,77 +1,79 @@
-function break_group(gno,sno) {
+function break_group(tid, captain_id) {
     $.ajax({
-    	url: "servlet/serDeleteGPS?action=break&GNo="+gno+"&SNo="+sno,
-        type: "GET",
-        async: false,
-        dataType: "text",
-        cache: false,
+        url: "team/deleteGps.do",
+        type: "post",
+        data: {
+            "tid": tid,
+            "captain_id": captain_id
+        },
         success: function (text) {
-           if(text=="success"){
-        	   alert("解散成功");
-        	   location.reload();
-           }
-           else{
-        	   alert("解散失败");
-           }
+            if (text === "success") {
+                alert("解散成功");
+                location.reload();
+            } else {
+                alert("解散失败，可能有部分团队数据丢失");
+            }
         }
     })
 }
 
-function remove_member(gno,sno){
-	alert("正在被移出的队员ID："+sno);
-	$.ajax({
-    	url: "servlet/serUpdateGPS?action=remove&GNo="+gno+"&SNo="+sno,
-        type: "GET",
-        async: false,
-        dataType: "text",
-        cache: false,
+function remove_member(tid, sid) {
+    $.ajax({
+        url: "team/removeMember.do",
+        type: "post",
+        data: {
+            "tid": tid,
+            "captain_id": sid
+        },
         success: function (text) {
-           if(text=="success"){
-        	   alert("踢出成功");
-        	   location.reload();
-           }
-           else{
-        	   alert("踢出失败");
-           }
+            if (text === "success") {
+                alert("踢出成功");
+                location.reload();
+            } else if (text === "fail_to_update_stu_pos") {
+                alert("踢出失败，丢失被踢出者数据")
+            } else {
+                alert("踢出失败");
+            }
         }
     })
 }
 
-function transfer_leader(gno,new_sno, old_sno){
-	$.ajax({
-    	url: "servlet/serUpdateGPS?action=transfer&GNo="+gno+"&newCaptain="+new_sno+"&oldCaptain="+old_sno,
-        type: "GET",
-        async: false,
-        dataType: "text",
-        cache: false,
+function transfer_leader(tid, newCaptainId, oldCaptainId) {
+    $.ajax({
+        url: "team/transferLeader.do",
+        type: "post",
+        data: {
+            "tid": tid,
+            "newCaptainId": newCaptainId,
+            "oldCaptainId": oldCaptainId
+        },
         success: function (text) {
-           if(text=="success"){
-        	   alert("转让成功");
-        	   location.reload();
-           }
-           else{
-        	   alert("转让失败");
-           }
+            if (text === "success") {
+                alert("转让成功");
+                location.reload();
+            } else {
+                alert("转让失败，可能丢失部分数据");
+            }
         }
     })
 }
 
-function quit_group(gno,sno){
-	
-	$.ajax({
-    	url: "servlet/serUpdateGPS?action=remove&GNo="+gno+"&SNo="+sno,
-        type: "GET",
-        async: false,
-        dataType: "text",
-        cache: false,
+function quit_group(tid, sid) {
+
+    $.ajax({
+        url: "team/quitTeam.do",
+        type: "post",
+        data: {
+            "tid": tid,
+            "sid": sid
+        },
         success: function (text) {
-           if(text=="success"){
-        	   alert("退出成功");
-        	   location.reload();
-           }
-           else{
-        	   alert("退出失败");
-           }
+            if (text === "success") {
+                alert("退出成功");
+                location.reload();
+            } else {
+                alert("退出失败");
+            }
         }
     })
 }

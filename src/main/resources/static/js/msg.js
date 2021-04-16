@@ -40,7 +40,7 @@ function refuse(sid, tid){
 	 })
 }
 
-function confirm(sid, tid){
+function apply_confirm(sid, tid){
 	 $.ajax({
 	        url: "servlet/serUpdateApply?action=confirm&SID="+sid+"&TID="+tid,
 	        type: "GET",

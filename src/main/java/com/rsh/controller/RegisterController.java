@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.Map;
 
 @Controller
@@ -21,9 +23,9 @@ public class RegisterController {
 
     @RequestMapping(value = "/checkIdRepeat.do")
     @ResponseBody
-    public String checkUserId(@RequestParam("userId") String userId,
-                            @RequestParam("signUpCode") String signUpCode){
-        System.out.println("check user id in controller");
+    public String checkUserId(@RequestParam String userId,
+                            @RequestParam String signUpCode){
+//        System.out.println("check user id in controller");
 
         return registerService.checkUserId(userId, signUpCode);
     }
@@ -31,7 +33,7 @@ public class RegisterController {
     @RequestMapping(value = "/signUp.do")
     @ResponseBody
     public String signUp(@RequestParam Map<String, String> paramMap){
-        System.out.println("sign up in controller");
+//        System.out.println("sign up in controller");
 
         String userid = paramMap.get("userid");
         String password = paramMap.get("password");
@@ -44,14 +46,15 @@ public class RegisterController {
 
     @RequestMapping(value = "/logIn.do")
     @ResponseBody
-    public String signIn(@RequestParam Map<String, String> paramMap){
-        System.out.println("sign in in controller");
+    public String signIn(@RequestParam Map<String, String> paramMap, HttpServletRequest request){
+//        System.out.println("sign in in controller");
 
         String userid = paramMap.get("userid");
         String password = paramMap.get("password");
         String status = paramMap.get("status");
 
-        return registerService.signIn(userid, password, status);
+        HttpSession session = request.getSession();
+        return registerService.signIn(session, userid, password, status);
     }
 }
 

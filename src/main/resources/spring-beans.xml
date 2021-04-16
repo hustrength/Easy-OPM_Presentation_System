@@ -16,5 +16,25 @@
         <property name="mapperInterface" value="com.rsh.mapper.TeaMapper"/>
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
+    <bean id="stuTeamMapper" class="com.rsh.easy_opm.factorybean.MapperFactoryBean">
+        <property name="db_type" value="RD"/>
+        <property name="mapperInterface" value="com.rsh.mapper.StuTeamMapper"/>
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean id="applyMapper" class="com.rsh.easy_opm.factorybean.MapperFactoryBean">
+        <property name="db_type" value="RD"/>
+        <property name="mapperInterface" value="com.rsh.mapper.ApplyMapper"/>
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean id="competitionMapper" class="com.rsh.easy_opm.factorybean.MapperFactoryBean">
+        <property name="db_type" value="RD"/>
+        <property name="mapperInterface" value="com.rsh.mapper.CompetitionMapper"/>
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean id="notificationMapper" class="com.rsh.easy_opm.factorybean.MapperFactoryBean">
+        <property name="db_type" value="RD"/>
+        <property name="mapperInterface" value="com.rsh.mapper.NotificationMapper"/>
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
 
 </beans>

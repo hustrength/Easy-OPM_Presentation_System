@@ -28,7 +28,7 @@ public interface StuTeamMapper {
 
     /**
      * 3. queryAllMembers
-     * @param cid
+     * @param tid
      * @return return all members in the team except the captain
      */
     @Select("select * " +
@@ -37,7 +37,7 @@ public interface StuTeamMapper {
             "where Position=1 and TID=?")
     @ParamType(Integer.class)
     @ResultType(Student.class)
-    List<Student> queryAllMembers(int cid);
+    List<Student> queryAllMembers(int tid);
 
     /**
      * 4. belongToTeam
@@ -114,7 +114,7 @@ public interface StuTeamMapper {
     @Select("select * from Team where TID=?;")
     @ParamType(Integer.class)
     @ResultType(Team.class)
-    Team queryTeamById(int tid);
+    Team queryTeamByTid(int tid);
 
     /**
      * 12. addTeam
@@ -131,12 +131,26 @@ public interface StuTeamMapper {
      * @param paramMap
      * @return
      */
-    @Update("update Team set CaptainID=? where TID=?;")
+    @Update("update Team set CaptainID=#{CaptainID} where TID=#{TID};")
     @ParamType(Map.class)
     boolean updateCaptain(Map<String, Object> paramMap);
 
-    @Update("update Stu_Team set Position=#{Position} " +
-            "where TID=#{TID} and StuID=#{StuID};")
+    /**
+     * 14. updateStuPos
+     * @param paramMap
+     * @return
+     */
+    @Update("update Stu_Team set Position=#{Pos} " +
+            "where TID=#{TID} and StuID=#{SID};")
     @ParamType(Map.class)
     boolean updateStuPos(Map<String, Object> paramMap);
+
+    /**
+     * 15. deleteTeamInfo
+     * @param tid
+     * @return
+     */
+    @Delete("delete from Team where TID=?;")
+    @ParamType(Integer.class)
+    boolean deleteTeamInfo(int tid);
 }

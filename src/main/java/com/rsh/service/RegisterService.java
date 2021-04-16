@@ -7,6 +7,8 @@ import com.rsh.model.Student;
 import com.rsh.model.Teacher;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpSession;
+
 
 @Service("registerService")
 public class RegisterService {
@@ -28,8 +30,7 @@ public class RegisterService {
 
             Student student = new Student(userId, password, sex, username);
 
-            boolean rs = stuMapper.insertOne(student);
-            return rs ? "success" : "fail";
+            return stuMapper.insertOne(student) ? "success" : "fail";
         } else {                            //教师注册
             if (!"N88".equals(signUpCode)) {
                 return "error_code";
@@ -37,20 +38,27 @@ public class RegisterService {
 
             Teacher teacher = new Teacher(userId, password, username);
 
-            boolean rs = teaMapper.insertOne(teacher);
-            return rs ? "success" : "fail";
+            return teaMapper.insertOne(teacher)? "success" : "fail";
         }
     }
 
-    public String signIn(String userId, String password, String status){
-        if (status.equals("stu")){
+    public String signIn(HttpSession session, String userId, String password, String status) {
+        if (status.equals("stu")) {
             Student stu = stuMapper.queryById(userId);
-            if (stu != null && password.equals(stu.getPassword()))
+            if (stu != null && password.equals(stu.getPassword())) {
+                if (session.getAttribute("student") != null)
+                    session.removeAttribute("student");
+                session.setAttribute("student", stu);
                 return "success";
-        }else {
+            }
+        } else {
             Teacher tea = teaMapper.queryById(userId);
-            if (tea != null && password.equals(tea.getPassword()))
+            if (tea != null && password.equals(tea.getPassword())) {
+                if (session.getAttribute("teacher") != null)
+                    session.removeAttribute("teacher");
+                session.setAttribute("teacher", tea);
                 return "success";
+            }
         }
         return "fail";
     }

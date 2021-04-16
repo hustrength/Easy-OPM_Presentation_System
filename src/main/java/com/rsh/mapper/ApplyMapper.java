@@ -8,13 +8,13 @@ import java.util.Map;
 
 public interface ApplyMapper {
     /**
-     * 1. insertApply
+     * 1. insertOne
      * @param apply
      * @return
      */
     @Insert("insert into Apply values(?,?,?);")
     @ParamType(Apply.class)
-    boolean insertApply(Apply apply);
+    boolean insertOne(Apply apply);
 
     /**
      * 2. deleteApply

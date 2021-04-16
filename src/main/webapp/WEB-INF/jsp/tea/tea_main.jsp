@@ -1,46 +1,44 @@
-<%@ page language="java" import="java.util.*,com.pss.user.*,com.pss.dao.*" pageEncoding="utf-8" %>
+<%@ page import="com.rsh.mapper.NotificationMapper" %>
+<%@ page import="com.rsh.mapper.EasyOpmMapper" %>
+<%@ page import="com.rsh.model.Notification" %>
+<%@ page pageEncoding="utf-8" %>
 <%
-    String path = request.getContextPath();
-    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
-    String teaPath = path + "/tea/";
+    String teaPath = "/tea/";
 %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <base href="<%=basePath%>">
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>团队比赛报名管理系统——教师界面</title>
     <!-- Bootstrap Styles-->
-    <link href="assets/css/bootstrap.css" rel="stylesheet"/>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet"/>
     <!-- FontAwesome Styles-->
-    <link href="assets/css/font-awesome.css" rel="stylesheet"/>
+    <link href="/assets/css/font-awesome.css" rel="stylesheet"/>
     <!-- Morris Chart Styles-->
-    <link href="assets/js/morris/morris-0.4.3.min.css" rel="stylesheet"/>
+    <link href="/assets/js/morris/morris-0.4.3.min.css" rel="stylesheet"/>
     <!-- Custom Styles-->
-    <link href="assets/css/custom-styles.css" rel="stylesheet"/>
-    <!-- Google Fonts-->
-    <link href="style_1.css" type="text/css" rel="stylesheet"/>
+    <link href="/assets/css/custom-styles.css" rel="stylesheet"/>
 </head>
 <body>
 
 <!-- /. WRAPPER  -->
 <!-- JS Scripts-->
 <!-- jQuery Js -->
-<script src="assets/js/jquery-1.10.2.js"></script>
+<script src="/assets/js/jquery-1.10.2.js"></script>
 <!-- Bootstrap Js -->
-<script src="assets/js/bootstrap.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
 <!-- Metis Menu Js -->
-<script src="assets/js/jquery.metisMenu.js"></script>
+<script src="/assets/js/jquery.metisMenu.js"></script>
 <!-- Morris Chart Js -->
-<script src="assets/js/morris/raphael-2.1.0.min.js"></script>
-<script src="assets/js/morris/morris.js"></script>
+<script src="/assets/js/morris/raphael-2.1.0.min.js"></script>
+<script src="/assets/js/morris/morris.js"></script>
 <!-- Custom Js -->
-<script src="assets/js/custom-scripts.js"></script>
-<script type="text/javascript" src="js/tea_main.js"></script>
+<script src="/assets/js/custom-scripts.js"></script>
+<script type="text/javascript" src="/js/tea_main.js"></script>
 
 <script type="text/javascript">
-    function edit_noti(title_old,content_old) {
+    function edit_noti(title_old, content_old) {
         var btn = document.getElementById("edit");
         var title = document.getElementById("title");
         var content = document.getElementById("content");
@@ -51,9 +49,9 @@
             content.removeAttribute("readOnly");
             content.style.border = "0.5px solid #808080";
         } else {
-        	title_old=title_old.replace(/<br>/g, '\r\n');
-        	content_old=content_old.replace(/<br>/g, '\r\n');
-        
+            title_old = title_old.replace(/<br>/g, '\r\n');
+            content_old = content_old.replace(/<br>/g, '\r\n');
+
             title.value = title_old;
             content.value = content_old;
             btn.value = "编辑";
@@ -82,9 +80,9 @@
                     <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-user">
-                    <li><a href="<%=teaPath %>tea_info.jsp"><i class="fa fa-user fa-fw"></i> 个人信息</a>
+                    <li><a href="<%=teaPath %>tea_info"><i class="fa fa-user fa-fw"></i> 个人信息</a>
                     <li class="divider"></li>
-                    <li><a href="<%=basePath%>login.jsp"><i class="fa fa-sign-out fa-fw"></i> 注销</a>
+                    <li><a href="/logout"><i class="fa fa-sign-out fa-fw"></i> 注销</a>
                     </li>
                 </ul>
                 <!-- /.dropdown-user -->
@@ -97,23 +95,24 @@
         <div class="sidebar-collapse">
             <ul class="nav" id="main-menu">
                 <li>
-                    <a class="active-menu" href="<%=teaPath %>tea_main.jsp"><i class="fa fa-bell"></i> 参赛须知</a>
+                    <a class="active-menu" href="<%=teaPath %>tea_main"><i class="fa fa-bell"></i> 参赛须知</a>
                 </li>
                 <li>
-                    <a><i class="fa fa-sitemap"></i> 比赛信息<span class="fa arrow"></a>
+                    <a><i class="fa fa-sitemap"></i> 比赛信息<span class="fa arrow"/></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="<%=teaPath %>project_release.jsp">发布比赛</a><!--连接到发布比赛信息jsp，自动创建一个新的比赛信息数据结构  -->
+                            <a href="<%=teaPath %>project_release">发布比赛</a><!--连接到发布比赛信息jsp，自动创建一个新的比赛信息数据结构  -->
                         </li>
                         <li>
-                            <a href="<%=teaPath %>project_info_tea.jsp">查看比赛</a><!--连接到发布比赛信息jsp，自动创建一个新的比赛信息数据结构  -->
+                            <a href="<%=teaPath %>project_info_tea">查看比赛</a><!--连接到发布比赛信息jsp，自动创建一个新的比赛信息数据结构  -->
                         </li>
                     </ul>
-                <li>
-                    <a href="<%=teaPath %>tea_team.jsp"><i class="fa fa-users"></i> 学生组队信息</a>
                 </li>
                 <li>
-                    <a href="<%=teaPath %>tea_info.jsp"><i class="fa fa-user"></i> 教师个人信息</a>
+                <a href="<%=teaPath %>tea_team"><i class="fa fa-users"></i> 学生组队信息</a>
+                </li>
+                <li>
+                    <a href="<%=teaPath %>tea_info"><i class="fa fa-user"></i> 教师个人信息</a>
                 </li>
 
             </ul>
@@ -130,16 +129,15 @@
                 </div>
             </div>
             <%
-            	Noti noti=null;
-                DaoNoti daonoti = new DaoNoti();
+                NotificationMapper notificationMapper = EasyOpmMapper.getNotificationMapper();
                 String cont = "";
                 String title = "";
-                noti = daonoti.query();
-                if (noti != null){
-                	cont=noti.getContent();
+                Notification notification = notificationMapper.query();
+                if (notification != null) {
+                    cont = notification.getContent();
                     //cont=cont.replace("\r\n", "<br>");
-                    
-                    title=noti.getTitle();
+
+                    title = notification.getTitle();
                     //title=title.replace("\r\n","");
                 }
             %>
@@ -149,8 +147,9 @@
                         <form id="form_noti">
                             <div class="panel-heading">
                                 <input id="title" name="title" type="text" readonly="readonly" style="border:0.5px solid #ffffff;font-size:16px;
-                                font-weight:700;padding:15px 10px 0px 10px;margin-bottom:-30px;margin-top:5px" value="<%=title %>">
-                               
+                                font-weight:700;padding:15px 10px 0px 10px;margin-bottom:-30px;margin-top:5px"
+                                       value="<%=title %>">
+
                             </div>
                             <hr>
                             <div style="width:100%;height:300px" class="textarea" contenteditable="true">
@@ -160,7 +159,7 @@
                             </div>
                             <hr>
                             <div style="display:flex">
-                            
+
                                 <input id="edit" type="button" value="编辑" class="btn btn-default"
                                        style="margin-left:18px;" onclick="edit_noti('','')">
                                 <input type="button" value="提交" class="btn btn-primary" style="margin-left:18px;"
@@ -182,7 +181,8 @@
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-default" data-dismiss="modal">取消
                                                 </button>
-                                                <input type="button" class="btn btn-primary" value="确认" data-dismiss="modal"
+                                                <input type="button" class="btn btn-primary" value="确认"
+                                                       data-dismiss="modal"
                                                        onclick="update_noti()">
                                             </div>
                                         </div>

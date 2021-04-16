@@ -16,6 +16,7 @@ function checkIdRepeat(val, ele, code) {
             } else {
                 flag1 = false;
                 ele.setCustomValidity("该用户名已被注册");
+                $("userid_signup")[0].reset();
             }
         }
     })
@@ -55,18 +56,18 @@ function checkPassword() {
 
 function commitForm_signin() {
     console.log("sign in in js");
-    var status = document.getElementById("status").value;
-    var login = "redirect/stu/main";
-    if ("tea" === status) login = "redirect/tea/tea_main";
+    const status = document.getElementById("status").value;
+    let login = "/stu/main";
+    if ("tea" === status) login = "/tea/tea_main";
 
-    var userid_signin = document.getElementById("userid_signin").value;
-    var password_signin = document.getElementById("password_signin").value;
+    const userid_signin = document.getElementById("userid_signin").value;
+    const password_signin = document.getElementById("password_signin").value;
 
-    var obj ={
+    const obj = {
         "userid": userid_signin,
         "password": password_signin,
         "status": status
-    }
+    };
 
     $.ajax({
         url: "register/logIn.do",
@@ -77,6 +78,8 @@ function commitForm_signin() {
                 window.location.href = login;
             } else {
                 alert("密码或用户名错误");
+                $("userid_signin")[0].reset();
+                $("password_signin")[0].reset();
             }
         }
     })

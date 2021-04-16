@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8" %>
+<%@ page pageEncoding="utf-8" %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -8,7 +8,7 @@
 
     <meta charset="UTF-8">
     <title>团队比赛报名管理系统</title>
-    <link href="css/stulogin.css" type="text/css" rel="stylesheet"/>
+    <link href="/css/stulogin.css" type="text/css" rel="stylesheet"/>
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache">
     <meta http-equiv="expires" content="0">

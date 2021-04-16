@@ -36,7 +36,6 @@ a{color:inherit;text-decoration:none}
 
 .login-wrap{
 	width:100%;
-	margin:auto;
 	max-width:525px;
 	min-height:550px;
 	position:relative;
@@ -74,7 +73,7 @@ a{color:inherit;text-decoration:none}
 }
 .login-html .tab{
 	font-size:22px;
-	margin-right:15px;
+	/*margin-right:15px;*/
 	padding-bottom:5px;
 	margin:0 15px 10px 0;
 	display:inline-block;
