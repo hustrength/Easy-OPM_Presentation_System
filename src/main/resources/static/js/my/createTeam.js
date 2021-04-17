@@ -30,7 +30,7 @@ function create_team() {
     const cid = document.getElementById("PNo").value;
     const vacantPos = document.getElementById("Gsnum").value;
 
-    if (vacantPos === 0){
+    if (vacantPos === "0"){
         alert("请选择团队人数");
         return false;
     }
