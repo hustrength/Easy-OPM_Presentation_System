@@ -33,7 +33,7 @@
 <!-- Custom Js -->
 <script src="/assets/js/custom-scripts.js"></script>
 <!-- Jquery Js -->
-<script type="text/javascript" src="/js/jquery-latest.js"></script>
+<script type="text/javascript" src="/js/lib/jquery-3.5.1.min.js"></script>
 <!-- CreateGroup Js -->
 <script type="text/javascript" src="/js/my/createTeam.js"></script>
 <div id="wrapper">
@@ -68,20 +68,20 @@
 
                         for (int TID : TID_list) {
                             String applicantID;
-                            Apply apply;
                             ApplyMapper applyMapper = EasyOpmMapper.getApplyMapper();
+                            StuTeamMapper stuTeamMapper = EasyOpmMapper.getStuTeamMapper();
                             List<Apply> list_apply = applyMapper.queryNotProcessedApplyByTid(TID);
 
-                            for (Apply value : list_apply) {
+                            for (Apply apply : list_apply) {
 
-                                apply = value;
                                 int status = apply.getStatus();
                                 if (status == 0) {
                                     applicantID = apply.getApplicantID();
                                     Student applicant = stuMapper.queryById(applicantID);
+                                    Team team = stuTeamMapper.queryTeamByTid(apply.getTID());
                     %>
 
-                    <li style="margin:3px 0px 0px 15px">
+                    <li style="margin:3px 0 0 15px">
 
                         <div>
                             <strong><%=applicant.getStuName() %>
@@ -91,7 +91,7 @@
 	                                    </span>
                         </div>
                         <div style="display:flex;">
-                            <div style="margin-top:5px">申请加入你的团队</div>
+                            <div style="margin-top:5px">申请加入"<%=team.getTName()%>"</div>
                             <input type="button" value="同意" class="btn btn-info btn-sm" style="margin-left:20px"
                                    onclick="agree('<%=apply.getApplicantID()%>', '<%=apply.getTID() %>')">
                             <input type="button" value="拒绝" class="btn btn-danger btn-sm" style="margin-left:10px"
@@ -124,7 +124,7 @@
 
                     %>
 
-                    <li style="margin:3px 0px 0px 15px">
+                    <li style="margin:3px 0 0 15px">
 
                         <div>
                             <strong><%=captain.getStuName() %>
@@ -138,12 +138,12 @@
                             <%
                                 if (status == 1) {
                             %>
-                            <div style="margin-top:5px">同意你加入团队<%=team.getTName() %>
+                            <div style="margin-top:5px">同意你加入"<%=team.getTName() %>"
                             </div>
                             <%
                             } else if (status == 2) {
                             %>
-                            <div style="margin-top:5px">拒绝你加入团队<%=team.getTName() %>
+                            <div style="margin-top:5px">拒绝你加入"<%=team.getTName() %>"
                             </div>
                             <%
                                 }
@@ -225,12 +225,16 @@
                                         <div class="form-group">
                                             <label>团队名称</label>
                                             <input class="form-control" id="Gname" name="Gname" required="required"
-                                                   onchange="check_gname_repeat()">
+                                                   onchange="check_gname_repeat()"
+                                                   oninvalid="setCustomValidity('该项不可为空')"
+                                                   oninput="setCustomValidity('')">
                                         </div>
                                         <div class="form-group">
                                             <label>选择比赛</label>
 
-                                            <select id="PNo" name="PNo" class="form-control">
+                                            <select id="PNo" name="PNo" class="form-control" required="required"
+                                                    oninvalid="setCustomValidity('该项不可为空')"
+                                                    oninput="setCustomValidity('')">
                                                 <option class="input_bt" value="" selected>--请选择--</option>
                                                 <%
                                                     Competition comp;
@@ -252,9 +256,11 @@
                                         </div>
                                         <div class="form-group">
                                             <label>团队人数</label>
-                                            <select class="input" name="Gsnum" id="Gsnum" required="required" style="height:30px"
-                                                    oninvalid="setCustomValidity('该项不可为空')" oninput="setCustomValidity('')">
-                                                <option class="input_bt" value="" selected>--请选择--</option>
+                                            <select class="input" name="Gsnum" id="Gsnum" required="required"
+                                                    style="height:30px"
+                                                    oninvalid="setCustomValidity('该项不可为空')"
+                                                    oninput="setCustomValidity('')">
+                                                <option class="input_bt" value="0" selected="selected">--请选择--</option>
                                                 <option class="input_bt" value="1">1 人</option>
                                                 <option class="input_bt" value="2">2 人</option>
                                                 <option class="input_bt" value="3">3 人</option>

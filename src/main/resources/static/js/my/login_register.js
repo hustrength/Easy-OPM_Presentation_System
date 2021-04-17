@@ -57,6 +57,12 @@ function checkPassword() {
 function commitForm_signin() {
     console.log("sign in in js");
     const status = document.getElementById("status").value;
+
+    if (status === 0){
+        alert("请选择登录身份");
+        return false;
+    }
+
     let login = "/stu/main";
     if ("tea" === status) login = "/tea/tea_main";
 
@@ -94,6 +100,11 @@ function commitForm_signup() {
     var username = document.getElementById("username").value;
     var sex = document.getElementById("sex").value;
     var signup_code = document.getElementById("signup_code").value;
+
+    if (sex === 0){
+        alert("请选择性别");
+        return false;
+    }
 
     var obj = {
         "userid": userid_signup,

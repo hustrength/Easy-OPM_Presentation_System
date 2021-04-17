@@ -30,6 +30,11 @@ function create_team() {
     const cid = document.getElementById("PNo").value;
     const vacantPos = document.getElementById("Gsnum").value;
 
+    if (vacantPos === 0){
+        alert("请选择团队人数");
+        return false;
+    }
+
     const obj = {
         "teamName": teamName,
         "cid": cid,
@@ -44,8 +49,10 @@ function create_team() {
             if (text === "success") {
                 alert("创建成功");
                 window.location.href = group_project;
-            } else if ("fail_to_update_stu_pos") {
-                alert("已创建团队，但剩余成员数修改失败")
+            } else if (text === "fail_to_update_stu_pos") {
+                alert("已创建团队，但剩余成员数修改失败");
+            } else if (text === "repeated competition") {
+                alert("已经作为队长组队参加了该竞赛，不可再次作为队长参加");
             } else {
                 alert("创建失败");
             }

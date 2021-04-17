@@ -74,20 +74,20 @@
 
                             for (int TID : TID_list) {
                                 String applicantID;
-                                Apply apply;
                                 ApplyMapper applyMapper = EasyOpmMapper.getApplyMapper();
+                                StuTeamMapper stuTeamMapper = EasyOpmMapper.getStuTeamMapper();
                                 List<Apply> list_apply = applyMapper.queryNotProcessedApplyByTid(TID);
 
-                                for (Apply value : list_apply) {
+                                for (Apply apply : list_apply) {
 
-                                    apply = value;
                                     int status = apply.getStatus();
                                     if (status == 0) {
                                         applicantID = apply.getApplicantID();
                                         Student applicant = stuMapper.queryById(applicantID);
+                                        Team team = stuTeamMapper.queryTeamByTid(apply.getTID());
                         %>
 
-                        <li style="margin:3px 0px 0px 15px">
+                        <li style="margin:3px 0 0 15px">
 
                             <div>
                                 <strong><%=applicant.getStuName() %>
@@ -97,7 +97,7 @@
 	                                    </span>
                             </div>
                             <div style="display:flex;">
-                                <div style="margin-top:5px">申请加入你的团队</div>
+                                <div style="margin-top:5px">申请加入"<%=team.getTName()%>"</div>
                                 <input type="button" value="同意" class="btn btn-info btn-sm" style="margin-left:20px"
                                        onclick="agree('<%=apply.getApplicantID()%>', '<%=apply.getTID() %>')">
                                 <input type="button" value="拒绝" class="btn btn-danger btn-sm" style="margin-left:10px"
@@ -127,6 +127,7 @@
 
                                 int status = curApply.getStatus();
                                 if (status != 0) {
+
                         %>
 
                         <li style="margin:3px 0 0 15px">
@@ -143,12 +144,12 @@
                                 <%
                                     if (status == 1) {
                                 %>
-                                <div style="margin-top:5px">同意你加入团队<%=team.getTName() %>
+                                <div style="margin-top:5px">同意你加入"<%=team.getTName() %>"
                                 </div>
                                 <%
                                 } else if (status == 2) {
                                 %>
-                                <div style="margin-top:5px">拒绝你加入团队<%=team.getTName() %>
+                                <div style="margin-top:5px">拒绝你加入"<%=team.getTName() %>"
                                 </div>
                                 <%
                                     }

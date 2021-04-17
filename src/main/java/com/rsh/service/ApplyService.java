@@ -4,7 +4,6 @@ import com.rsh.mapper.ApplyMapper;
 import com.rsh.mapper.EasyOpmMapper;
 import com.rsh.mapper.StuTeamMapper;
 import com.rsh.model.Apply;
-import com.rsh.model.Student;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -15,10 +14,11 @@ public class ApplyService {
     private final ApplyMapper applyMapper = EasyOpmMapper.getApplyMapper();
     private final StuTeamMapper stuTeamMapper = EasyOpmMapper.getStuTeamMapper();
 
-    public String insert(Student applicant, int tid, String sid) {
+    public String insert(int tid, String sid) {
         Map<String, Object> paramMap = new HashMap<>();
+
         paramMap.put("TID", tid);
-        paramMap.put("ApplicantID", applicant.getStuID());
+        paramMap.put("ApplicantID", sid);
         Integer applyStatus = applyMapper.isApplied(paramMap);
         if (applyStatus != null && applyStatus != 0) {
             return "applied";

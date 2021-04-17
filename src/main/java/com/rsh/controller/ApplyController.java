@@ -1,15 +1,11 @@
 package com.rsh.controller;
 
-import com.rsh.model.Student;
 import com.rsh.service.ApplyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/apply")
@@ -24,11 +20,8 @@ public class ApplyController {
     @RequestMapping("/insert.do")
     @ResponseBody
     public String insert(@RequestParam String tid,
-                         @RequestParam String sid,
-                         HttpServletRequest request) {
-        HttpSession session = request.getSession();
-        Student applicant = (Student) session.getAttribute("student");
-        return applyService.insert(applicant, Integer.parseInt(tid), sid);
+                         @RequestParam String sid) {
+        return applyService.insert(Integer.parseInt(tid), sid);
     }
 
     @RequestMapping("/agree.do")

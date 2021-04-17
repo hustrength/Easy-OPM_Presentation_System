@@ -52,16 +52,16 @@ public class TeamService {
 
     public String transferLeader(int tid, String newCaptainId, String oldCaptainId) {
         Map<String, Object> paramMap = new HashMap<>();
-        paramMap.put("TID", tid);
-        paramMap.put("SID", newCaptainId);
-        paramMap.put("Pos", false);
 
-        paramMap.clear();
         paramMap.put("TID", tid);
-        paramMap.put("Captain_ID", newCaptainId);
+        paramMap.put("CaptainID", newCaptainId);
         if (!stuTeamMapper.updateCaptain(paramMap))
             return "fail";
 
+        paramMap.clear();
+        paramMap.put("TID", tid);
+        paramMap.put("SID", newCaptainId);
+        paramMap.put("Pos", false);
         if (stuTeamMapper.updateStuPos(paramMap)) {
             paramMap.clear();
             paramMap.put("TID", tid);
@@ -77,6 +77,18 @@ public class TeamService {
     }
 
     public String createTeam(String teamName, int cid, String captain_id, int vacantPos){
+        Map<String, Object> paramMap = new HashMap<>();
+
+        // judge if having selected the competition
+        List<Team> teams = stuTeamMapper.queryAllTeamByCid(cid);
+        for (Team cur : teams){
+            paramMap.clear();
+            paramMap.put("StuID", captain_id);
+            paramMap.put("TID", cur.getTID());
+            if (stuTeamMapper.belongToTeam(paramMap))
+                return "repeated competition";
+        }
+
         Team team = new Team();
         team.setCaptainID(captain_id);
         team.setCID(cid);
@@ -86,8 +98,8 @@ public class TeamService {
             return "fail";
 
         // set captain
-        Map<String, Object> paramMap = new HashMap<>();
         int tid = stuTeamMapper.queryTeamByName(teamName).getTID();
+        paramMap.clear();
         paramMap.put("TID", tid);
         paramMap.put("SID", captain_id);
         paramMap.put("POS", false);

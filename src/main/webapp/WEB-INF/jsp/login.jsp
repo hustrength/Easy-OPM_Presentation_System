@@ -51,7 +51,7 @@
                             <label for="status" class="label1">身份</label>
                             <select class="input1" name="status" id="status" required="required" style="height:40px"
                                     oninvalid="setCustomValidity('该项不可为空')" oninput="setCustomValidity('')">
-                                <option class="input_bt" value="" selected>--请选择--</option>
+                                <option class="input_bt" value="0" selected="selected">--请选择--</option>
                                 <option class="input_bt" value="stu">学生</option>
                                 <option class="input_bt" value="tea">教师</option>
                             </select>
@@ -94,7 +94,7 @@
                             <label for="sex" class="label">性别</label>
                             <select class="input" name="sex" id="sex" required="required" style="height:30px"
                                     oninvalid="setCustomValidity('该项不可为空')" oninput="setCustomValidity('')">
-                                <option class="input_bt" value="" selected>--请选择--</option>
+                                <option class="input_bt" value="0" selected="selected">--请选择--</option>
                                 <option class="input_bt" value="男">男</option>
                                 <option class="input_bt" value="女">女</option>
                             </select>
